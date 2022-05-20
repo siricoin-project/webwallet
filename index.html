@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="no-js" lang="eng">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>SiriCoin | Web-Wallet</title>
+    <meta name="description" content="SiriCoin is a Crypto which can be mined on low-powered devices like AVRs, ESPs, CPUs, RPIs and Androids with Our specialized miners.">
+        <meta name="keywords" content="AVR, avr, Arduino, arduino, Rpi, raspberry pi, raspberry pi mining, cryptocurrency, esp mining, avr mining, esp, mobile mining, android mining">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo/logo.png"/>
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1FWCF5MYV5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1FWCF5MYV5');
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5663139935855988"
+crossorigin="anonymous"></script>
+	  
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="assets/css/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css"/>
+    <link rel="stylesheet" href="assets/css/tiny-slider.css"/>
+    <link rel="stylesheet" href="assets/css/animate.css"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+  </head>
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+      <div class="loader">
+        <div class="spinner">
+          <div class="spinner-container">
+            <div class="spinner-rotator">
+              <div class="spinner-left">
+                <div class="spinner-circle"></div>
+              </div>
+              <div class="spinner-right">
+                <div class="spinner-circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+		<!-- preloader end -->
+		
+
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+      <div class="navbar-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="https://siricoin.tech">
+                  <img src="assets/images/logo/logo.png" alt="Logo" style="width: 60px; height: auto;" />
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+                  <span class="toggler-icon"></span>
+								</button>
+								
+                <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+									<div class="ms-auto">
+										<ul id="nav" class="navbar-nav ms-auto">
+											<li class="nav-item">
+												<a class="page-scroll active" href="#home">Home</a>
+											</li>
+											<li class="nav-item">
+												<a class="page-scroll active" href="#wallet">Wallet</a>
+											</li>
+											<li class="nav-item">
+												<a class="page-scroll active" href="#about">About</a>
+											</li>
+											<li class="nav-item">
+												<a class="page-scroll" href="#more">More</a>
+											</li>
+									</div>
+                </div>
+
+                <!-- navbar collapse -->
+              </nav>
+              <!-- navbar -->
+            </div>
+          </div>
+          <!-- row -->
+        </div>
+        <!-- container -->
+      </div>
+      <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+      <div class="hero-wrapper">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-xxl-5 col-xl-6 col-lg-6 col-md-10">
+							<div class="hero-content">
+								<h1>Send/Receive SiriCoin's Using Official Web-Wallet.</h1>
+								<a href="#wallet" class="main-btn btn-hover">Use Now</a>
+							</div>
+						</div>
+						<div class="col-xxl-6 col-xl-6 col-lg-6 offset-xxl-1">
+							<div class="hero-image text-center text-lg-start">
+								<img src="assets/images/hero/hero-image.svg" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </section>
+
+	<section id="wallet" class="hero-section">
+		<div class="hero-wrapper">
+				  <div class="container">
+					  <div class="row align-items-center">
+							  <div class="hero-content" style="text-align: center;">
+								  <button style="margin-right: 7px;" class="main-btn btn-hover" id="connect" onclick="init()">Connect Wallet</button>
+								  <button style="margin-right: 7px;" class="main-btn btn-hover" id="getwallet" onclick="getit()"> Get Wallet</button>
+								  <button style="margin-right: 7px;" class="main-btn btn-hover" id="addnetwork" onclick="addnet()">Add Siricoin Network</button>
+								  <p>
+									<div style="color: black;">Address : <span id="addresslabel">No Wallet Connected!</span></div>
+									<div style="color: black;">Your Siricoin Balance : <span id="balancelabel">0</span></div>
+								</p>
+								<p>
+									<div style="margin-bottom: 40px;">
+										<input type="number" id="amounttosendinput" placeholder="Amount to send" style="height: 40px; border-radius: 100px; text-align: center;"></input>
+										<input type="text" id="recipientinput" placeholder="Address of recipient" style="height: 40px; border-radius: 100px; text-align: center;"></input>
+									</div>
+								  
+								  <button id="button" onclick="transfer()" class="main-btn btn-hover">Send</button>
+								</p>  
+							  </div>
+						</div>
+				  </div>
+			  </div>
+	  </section>
+<br>
+<br>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5663139935855988"
+     data-ad-slot="7106698748"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+		<!-- ========================= hero-section end ========================= -->
+
+		<!-- ========================= about-section start ========================= -->
+		<section id="about" class="about-section">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6 order-last order-lg-first">
+						<div class="about-image text-center text-lg-end">
+							<img src="assets/images/logo/logo.png" style="width: 80%;" alt="">
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-10">
+						<div class="about-content-wrapper">
+							<div class="section-title">
+								<h2 class="mb-20">SiriCoin is a Light-Weight Cryptocurrency, mineable on various devices including Low Powered devices.</h2>
+								<p class="mb-30">SiriCoin is a lightweight crypto which can be mined on any devices including low-powered devices like CPUs, Microcontrollers such as Arduinos (AVRs) and espressiff systems boards (ESPs), Single Board Computers like Raspberry Pi (RPIs) and Mobiles, etc...</p>
+								<a href="https://docs.siricoin.tech/siricoin-whitepaper" class="main-btn btn-hover">Read More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- ========================= about-section end ========================= -->
+
+		<!-- ========================= feature-section-2 start ========================= -->
+		<section id="feature-2" class="feature-section-2">
+			<div class="feature-wrapper-2">
+				<div class="container">
+					<div class="row align-items-center">
+						<div class="col-lg-6 col-md-10">
+							<div class="feature-content-wrapper">
+								<div class="section-title">
+									<h2 class="mb-30">Quick & Easy to <br class="d-none d-sm-block"> Mine SiriCoin</h2>
+									<p class="mb-30">You can mine easily SiriCoin with our easy features. <br> And You can also start mining SiriCoin using the <a href="https://siricoin.tech/#webminer">Web-Miner</a> <br> without any linux knowledge.</p>
+									<a href="https://docs.siricoin.tech/siricoin-whitepaper" class="main-btn btn-hover">Read More</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="feature-image text-lg-end">
+								<img src="assets/images/feature/feature-image.svg" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-5663139935855988"
+     data-ad-slot="7106698748"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+		<!-- ========================= feature-section-2 end ========================= -->
+
+		<!-- ========================= cta-section start ========================= -->
+		
+		<!-- ========================= cta-section end ========================= -->
+
+		<!-- ========================= footer start ========================= -->
+		<footer id="more" class="footer" style="margin-top: 10%;">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-10">
+						<div class="footer-widget">
+							<div class="logo">
+								<a href="https://siricoin.tech"> <img src="assets/images/logo/logo.png" style="width: 80px;" alt="logo"> </a>
+							</div>
+							<p class="desc">The only Cryptocurrency that You can mine using Mobile's, AVR's, ESP's, CPU's, few other Low Powered Devices...</p>
+						</div>
+					</div>
+					<div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+						<div class="footer-widget">
+							<h3>About Us</h3>
+							<ul class="links">
+								<li><a href="https://siricoin.tech/">Home</a></li>
+								<li><a href="https://docs.siricoin.tech/">About</a></li>
+								<li><a href="https://siricoin.tech/#webminer">Mine SiriCoin</a></li>
+								<li><a href="https://nowpayments.io/donation/SiriCoin">Donate Us</a></li>
+								<li><a href="https://siricoin.tech/#contact">Contact Us</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
+						<div class="footer-widget">
+							<h3>CSS Used</h3>
+							<ul class="links">
+								<li><a href="#0">SaaS Focused</a></li>
+								<li><a href="#0">Awesome Design</a></li>
+								<li><a href="#0">Ready to Use</a></li>
+								<li><a href="#0">Essential Selection</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-xl-3 col-lg-4 col-md-6">
+						<div class="footer-widget">
+							<h3>Follow Us</h3>
+							<ul class="social-links">
+								<li><a href="https://t.me/SiriCoinCommunity"><i class="lni lni-telegram-original"></i></a></li>
+								<li><a href="https://www.instagram.com/_siricoin/"><i class="lni lni-instagram-filled"></i></a></li>
+								<li><a href="https://discord.com/invite/gEaxnmxzwP"> <i><img src="assets/images/logo/discord.svg" style="width: 20px;"></i></a></li>
+								<li><a href="https://www.reddit.com/r/SiriCoin/"> <i><img src="assets/images/logo/reddit.svg" style="width: 20px;"></i></a></li>
+								<li><a href="https://www.youtube.com/channel/UCwIpg_DrZLATfEteoIJBBqA"> <i><img src="assets/images/logo/youtube.svg" style="width: 20px;"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container" style="margin-top: 20px;">
+				<div class="copyright">
+					<p>Design and Developed By <a href="https://github.com/Sanjaysandy" rel="nofollow" target="_blank">SanjaySiri</a> & <a href="https://github.com/JunaidPeer" rel="nofollow" target="_blank">Peer</a></p>
+				</div>
+			</div>
+		</footer>
+		<!-- ========================= footer end ========================= -->
+
+
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+      <i class="lni lni-chevron-up"></i>
+    </a>
+
+    <!-- ========================= JS here ========================= -->
+    <script src="assets/js/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="assets/js/tiny-slider.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/polyfill.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+  <script src="browserTransactionBuilder.js"></script>
+	<script>
+		async function refreshStatus(web3Instance) {
+				let _account = (await web3Instance.eth.getAccounts())[0];
+				let accountInfo = await getAccountInfo(_account);
+				let balance = accountInfo.balance;
+				document.getElementById("addresslabel").innerHTML = "Connecting";
+				document.getElementById("addresslabel").innerHTML = _account;
+				document.getElementById("balancelabel").innerHTML = balance;
+		}
+		
+		async function init() {
+			web3 = new Web3(window.ethereum);
+			await window.ethereum.request({ method: 'eth_requestAccounts' })
+			await refreshStatus(web3);
+			document.getElementById("connect").innerHTML = "Connected!";
+		}
+		 async function getit() {
+			window.open('https://metamask.io', '_blank');
+		 }
+		
+		async function transfer() {
+			_to = document.getElementById("recipientinput").value;
+			_tokens = document.getElementById("amounttosendinput").value;
+			let _account = (await web3.eth.getAccounts())[0];
+			if (!web3.utils.isAddress(_to)) {
+				return (false, "INVALID_RECIPIENT");
+			}
+			if ((await getAccountInfo(_account)).balance < _tokens) {
+				return (false, "INSUFFICIENT_BALANCE");
+			}
+			let signedTx = await buildTransaction(web3, _to, _tokens);
+			console.log(signedTx);
+			let result = await sendTransaction(signedTx);
+			refreshStatus(web3);
+			document.getElementById("button").innerHTML = "Sent";
+			return (true, result[0]);
+		}
+	</script>
+</html>
